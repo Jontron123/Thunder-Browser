@@ -807,10 +807,6 @@ public class BrowserActivity extends Activity implements BrowserController {
 		if (num == 1) {
 			mCurrentView.loadUrl(url);
 		} else if (url != null) {
-			if (url.startsWith(Constants.FILE)) {
-				Utils.showToast(this, getResources().getString(R.string.message_blocked_local));
-				url = null;
-			}
 			newTab(true, url);
 			mIsNewIntent = true;
 		}
@@ -1369,12 +1365,6 @@ public class BrowserActivity extends Activity implements BrowserController {
 		String url = null;
 		if (getIntent() != null) {
 			url = getIntent().getDataString();
-			if (url != null) {
-				if (url.startsWith(Constants.FILE)) {
-					Utils.showToast(this, getResources().getString(R.string.message_blocked_local));
-					url = null;
-				}
-			}
 		}
 		if (mPreferences.getBoolean(PreferenceConstants.RESTORE_LOST_TABS, true)) {
 			String mem = mPreferences.getString(PreferenceConstants.URL_MEMORY, "");
